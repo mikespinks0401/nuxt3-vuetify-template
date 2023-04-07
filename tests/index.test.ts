@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest"
+import { describe, it, expect, vi, beforeEach } from "vitest"
 import { mount, config } from "@vue/test-utils"
 import App from "../app.vue"
 
@@ -8,9 +8,12 @@ import { createVuetify } from "vuetify"
 
 //Create vuetify instance to be injected
 const vuetify = createVuetify()
-config.global.plugins = [vuetify]
 
 describe("app loads", () => {
+  let Vuetify;
+  beforeEach(()=>{
+    config.global.plugins= [vuetify]
+  })
   it('loads', () => {
     //Asser that the app loads
     let wrapper = mount(App)
@@ -26,7 +29,6 @@ describe("app loads", () => {
 
     //gets the original number
     const og = wrapper.get('[data-test="number"]').text()
-    console.log("OG NUMBER = " + og)
     expect(parseInt(og)).toEqual(0)
 
     //Trigger Click event on the button
