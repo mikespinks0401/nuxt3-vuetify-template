@@ -1,7 +1,16 @@
+<script setup lang="ts">
+import { ref } from "vue"
+const num = ref(0)
+
+const incrementCount = () => {
+  num.value++
+}
+</script>
+
 <template>
   <div>
     <v-app>
-      <p class="text-h1">With Vuetify</p>
+    <NuxtPage />
     </v-app>
   </div>
 </template>
